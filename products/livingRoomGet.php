@@ -30,7 +30,7 @@ if ($q == "View All") {
 <input type="hidden" name="emailID" value="' . $_SESSION["emailID"] . '"/> 
 <input type="hidden" name="item" value="' . $row["name"] . '"/> 
 <input type="hidden" name="price" value="' . $row["price"] . '"/> 
-<input type="submit">
+<input type="submit" value="Order">
 </form>
       </div>';
     }
@@ -63,7 +63,7 @@ if ($q == "View All") {
 <input type="hidden" name="emailID" value="' . $_SESSION["emailID"] . '"/> 
 <input type="hidden" name="item" value="' . $row["name"] . '"/> 
 <input type="hidden" name="price" value="' . $row["price"] . '"/> 
-<input type="submit">
+<input type="submit" value="Order">
 </form>
       </div>';
     }
