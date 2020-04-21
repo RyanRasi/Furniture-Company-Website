@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Table name
 $table_name = "orders";
 
@@ -31,6 +31,9 @@ if (mysqli_query($conn, $sql)) {
 }
 
 mysqli_close($conn);
+
+$_SESSION['ordered'] = TRUE;
+
 header("Location: ../products.php");
 exit();
 

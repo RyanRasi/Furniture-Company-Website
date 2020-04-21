@@ -26,7 +26,21 @@ session_start();
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
 
    
-       
+       <?php
+if (isset($_SESSION['ordered'])) {
+  echo '
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <h4>You have successfully ordered your product!</h4>
+  <h4>It will arrive in 3 - 5 business days!</h4>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+';
+
+$_SESSION['ordered'] = NULL;
+}
+       ?>
 
 
 <div class="container-fluid">
