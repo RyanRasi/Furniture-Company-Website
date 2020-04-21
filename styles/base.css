@@ -1,0 +1,7 @@
+body {
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(246,187,187,1) 0%, rgba(249,219,217,1) 90% );
+}
+
+.alert {
+    text-align: center;
+}
