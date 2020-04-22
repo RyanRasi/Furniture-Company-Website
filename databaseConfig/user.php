@@ -12,8 +12,10 @@ class User{
  public $phoneNumber;
  public $emailID;
  public $password;
- public $admin;
+ public $admin = FALSE;
  public $created;
+
+public $aesKey = 'TheInfinityGauntlet';
 
  // constructor with $db as database connection
  public function __construct($db){
@@ -25,11 +27,19 @@ class User{
  if($this->isAlreadyExist()){
  return false;
  }
+
+
  // query to insert record
  $query = "INSERT INTO
  " . $this->table_name . "
- SET
- name=:name, phoneNumber=:phoneNumber, emailID=:emailID, password=:password, admin=:admin, created=:created";
+ SET 
+ name=:name, 
+ phoneNumber=:phoneNumber, 
+ emailID=:emailID,
+ password = AES_ENCRYPT(:password, :key),
+ admin=:admin, 
+ created=:created
+ ";
 
  // prepare query
  $stmt = $this->conn->prepare($query);
@@ -46,6 +56,7 @@ class User{
  $stmt->bindParam(":phoneNumber", $this->phoneNumber);
  $stmt->bindParam(":emailID", $this->emailID);
  $stmt->bindParam(":password", $this->password);
+ $stmt->bindParam(":key", $this->aesKey);
  $stmt->bindParam(":admin", $this->admin);
  $stmt->bindParam(":created", $this->created);
 
@@ -60,13 +71,12 @@ class User{
  }
  // login user
  function login(){
+    // $this->password = "AES_DECRYPT('$this->password', '$this->aesKey')";
  // select all query
- $query = "SELECT
- `id`, `name`, `phoneNumber`, `emailID`, `password`, `admin`, `created`
- FROM
- " . $this->table_name . "
- WHERE
- phoneNumber='".$this->phoneNumber."' AND password='".$this->password."'";
+ $query = 
+ "SELECT id, name, phoneNumber, emailID, password, admin, created FROM " . $this->table_name . " WHERE
+ phoneNumber='".$this->phoneNumber."' AND password=AES_ENCRYPT('".$this->password."', '$this->aesKey')";
+  //password = AES_ENCRYPT(password, '$aesKey'),
  // prepare query statement
  $stmt = $this->conn->prepare($query);
  // execute query
