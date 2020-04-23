@@ -3,11 +3,8 @@ session_start();
 
 if (isset($_SESSION['loggedIn'])) {
   header("Location: userDashboard.php");
+  exit();
 }
-
-if (isset($_SESSION['signupError'])) {
-}
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -22,7 +19,8 @@ if (isset($_SESSION['signupError'])) {
   <link rel="stylesheet" href="" />
   <link rel="stylesheet" href="">
   <title>Furniture Emporium - Sign Up</title>
-
+  <meta name="description" content="User Signup Page!">
+  <meta name="keywords" content="Register, Signup, Create Account">
   <!-- REACT is JavaScript library created by Facebook used for building Web Apps -->
   <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>

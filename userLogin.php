@@ -2,6 +2,7 @@
 session_start();
 if (isset($_SESSION['loggedIn'])) {
   header("Location: userDashboard.php");
+  exit();
 }
 ?>
 <!doctype html>
@@ -17,7 +18,8 @@ if (isset($_SESSION['loggedIn'])) {
   <link rel="stylesheet" href="./styles/base.css" />
   <link rel="stylesheet" href="./styles/login.css">
   <title>Furniture Emporium - Login</title>
-
+  <meta name="description" content="User Login Page!">
+  <meta name="keywords" content="Login, Signin">
 </head>
 
 <body>

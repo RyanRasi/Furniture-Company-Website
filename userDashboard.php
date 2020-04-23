@@ -2,6 +2,7 @@
 session_start();
 if (!isset($_SESSION['loggedIn'])) {
   header("Location: ./index.php");
+  exit();
 }
 ?>
 <!doctype html>
@@ -17,7 +18,8 @@ if (!isset($_SESSION['loggedIn'])) {
   <link rel="stylesheet" href="./styles/base.css" />
   <link rel="stylesheet" href="./styles/index.css" />
   <title>Furniture Emporium - Dashboard</title>
-
+  <meta name="description" content="User Dashboard Page!">
+  <meta name="keywords" content="Offers, Purchase, UserConfig">
   <!-- REACT is JavaScript library created by Facebook used for building Web Apps -->
   <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>

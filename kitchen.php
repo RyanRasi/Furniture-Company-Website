@@ -13,7 +13,8 @@ session_start();
     <link rel="stylesheet" href="./styles/base.css" />
     <link rel="stylesheet" href="./styles/kitchen.css" />
     <title>Furniture Emporium - Kitchen</title>
-
+    <meta name="description" content="Kitchen products range!">
+  <meta name="keywords" content="Furniture Store, Kitchen, Delivery, Environmentally friendly, Fridge, Cooker, Sinks, Cabinets, Appliances, Chairs, Worktops">
     <!-- REACT is JavaScript library created by Facebook used for building Web Apps -->
     <script src= "https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script src= "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
