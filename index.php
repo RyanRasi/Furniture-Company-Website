@@ -38,35 +38,6 @@ session_start();
   </header>
 
   <div class="slider"></div>
-
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-md-4 mx-auto">
-        <div class="card h-100 border-primary justify-content-center">
-          <img class="card-img-top" src="./img/kitchen.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Explore our furniture range and discover your dream sofa today!</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mx-auto">
-        <div class="card h-100 border-primary justify-content-center">
-          <img class="card-img-top" src="./img/kitchen.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">Have a breeze exploring our freezer range!</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mx-auto">
-        <div class="card h-100 border-primary justify-content-center">
-          <img class="card-img-top" src="./img/kitchen.jpg" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">You'll have a juicy time with our new smoothie maker!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
