@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `name` varchar(50) NOT NULL DEFAULT '',
   `phoneNumber` varchar(11) NOT NULL DEFAULT '0',
   `emailID` varchar(50) NOT NULL DEFAULT '',
-  `password` varchar(50) NOT NULL DEFAULT '',
+  `password` varbinary(150) NOT NULL DEFAULT '',
   `admin` boolean NOT NULL DEFAULT FALSE,
   `created`  timestamp  NOT  NULL  DEFAULT  CURRENT_TIMESTAMP  ON UPDATE CURRENT_TIMESTAMP,
   UNIQUE KEY `id` (`id`)
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
 
 
 INSERT INTO `Users` (`id`, `name`, `phoneNumber`, `emailID`, `password`, `admin`, `created`) VALUES
-(1, 'Tony Stark', '01234567891', 'ironman@avengers.com', 'Pepper', TRUE, CURRENT_TIMESTAMP),
-(2, 'Steve Rogers', '12345678910', 'captainamerica@avengers.com', 'Peggy', TRUE, CURRENT_TIMESTAMP),
-(3, 'Thor Odinson', '23456789101', 'thor@avengers.com', 'Jane', FALSE, CURRENT_TIMESTAMP),
-(4, 'Bruce Banner', '45447878787', 'bruce@avengers.com', 'Betty', FALSE, CURRENT_TIMESTAMP);
+(1, 'Tony Stark', '01234567891', 'ironman@avengers.com', AES_ENCRYPT('Pepper', 'TheInfinityGauntlet'), TRUE, CURRENT_TIMESTAMP),
+(2, 'Steve Rogers', '12345678910', 'captainamerica@avengers.com', AES_ENCRYPT('Peggy', 'TheInfinityGauntlet'), TRUE, CURRENT_TIMESTAMP),
+(3, 'Thor Odinson', '23456789101', 'thor@avengers.com', AES_ENCRYPT('Jane', 'TheInfinityGauntlet'), FALSE, CURRENT_TIMESTAMP),
+(4, 'Bruce Banner', '45447878787', 'bruce@avengers.com', AES_ENCRYPT('Betty', 'TheInfinityGauntlet'), FALSE, CURRENT_TIMESTAMP);
