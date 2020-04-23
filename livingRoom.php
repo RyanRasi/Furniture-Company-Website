@@ -12,7 +12,7 @@ session_start();
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/base.css" />
-  <link rel="stylesheet" href="./styles/livingroom.css" />
+  <link rel="stylesheet" href="./styles/productLists.css" />
   <title>Furniture Emporium - Living Room</title>
   <meta name="description" content="Living Room products range!">
   <meta name="keywords" content="Furniture Store, Kitchen, Delivery, Environmentally friendly, Sofa, Coffee Table, Rug, Bookcases, Media Units, Arm Chairs, Lamps">
@@ -30,48 +30,49 @@ session_start();
 
 
 
-  <div class="container-fluid">
+  <div class="container-fluid text-center">
     <div class="row">
-      <div class="col-xl-12">
 
-        <br><br>
 
-        <tr>
-          <td>
-            Sort Variety<br>
+      <br><br>
 
-            <select name=variety id="s1" onchange=ajaxFunction(s1.value);>
-              <option value='View All'>View All</option>
+      <div class="col-md-5">
+      </div>
+      <div class="col-md-2">
+        <label for="exampleFormControlSelect1"><b>Sort Variety</b></label>
 
-              <?php
-              $dbhost_name = "localhost";
-              $database = "17010485";
-              $username = "root";
-              $password = "";
+        <select class="form-control" name=variety id='s1' onchange=ajaxFunction(s1.value);>
+          <option value='View All'>View All</option>
 
-              try {
-                $dbo = new PDO('mysql:host=' . $dbhost_name . ';dbname=' . $database, $username, $password);
-              } catch (PDOException $e) {
-                print "Error!: " . $e->getMessage() . "<br/>";
-                die();
-              }
+          <?php
+          $dbhost_name = "localhost";
+          $database = "17010485";
+          $username = "root";
+          $password = "";
 
-              $sql = "select distinct variety from LivingRoom ";
-              foreach ($dbo->query($sql) as $row) {
-                echo "<option value='" . $row["variety"] . "'>" . $row["variety"] . "</option>";
-              }
-              ?>
-            </select>
-          </td>
+          try {
+            $dbo = new PDO('mysql:host=' . $dbhost_name . ';dbname=' . $database, $username, $password);
+          } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+          }
 
-        </tr>
-
-        <br><br>
-
+          $sql = "select distinct variety from LivingRoom ";
+          foreach ($dbo->query($sql) as $row) {
+            echo "<option value='" . $row["variety"] . "'>" . $row["variety"] . "</option>";
+          }
+          ?>
+        </select>
+      </div>
+      <div class="col-md-5">
       </div>
     </div>
+    </td>
+
 
   </div>
+  <br><br>
+
   <div class="container-fluid">
     <div class="row" id="your_div">Product info will be listed here...</b></div>
 

@@ -11,7 +11,7 @@ session_start();
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./styles/base.css" />
-    <link rel="stylesheet" href="./styles/kitchen.css" />
+    <link rel="stylesheet" href="./styles/productLists.css" />
     <title>Furniture Emporium - Kitchen</title>
     <meta name="description" content="Kitchen products range!">
   <meta name="keywords" content="Furniture Store, Kitchen, Delivery, Environmentally friendly, Fridge, Cooker, Sinks, Cabinets, Appliances, Chairs, Worktops">
@@ -30,16 +30,18 @@ session_start();
        
 
 
-<div class="container-fluid">
+      <div class="container-fluid text-center">
   <div class="row">
-    <div class="col-xl-12">
+
 
 <br><br>
 
-<tr><td >
-Sort Variety<br>
+<div class="col-md-5">
+</div>
+    <div class="col-md-2">
+<label for="exampleFormControlSelect1"><b>Sort Variety</b></label>
 
-<select name=variety id='s1' onchange=ajaxFunction(s1.value);>
+<select class="form-control" name=variety id='s1' onchange=ajaxFunction(s1.value);>
 <option value='View All'>View All</option>
 
 <?php
@@ -62,16 +64,16 @@ foreach ($dbo->query($sql) as $row) {
 }
 ?>
 </select>
+</div>
+<div class="col-md-5">
+</div>
+</div>
 </td>
 
-</tr>
-
-<br><br>
         
 </div>
-  </div>
+<br><br>
 
-</div>
 <div class="container-fluid">
   <div class="row" id="your_div">Product info will be listed here...</b></div>
 
