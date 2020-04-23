@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+print_r($_SESSION);
 if (isset($_SESSION['loggedIn'])) {
   header("Location: userDashboard.php");
   exit();
@@ -16,8 +16,8 @@ if (isset($_SESSION['loggedIn'])) {
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="" />
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="./styles/base.css" />
+  <link rel="stylesheet" href="./styles/form.css" />
   <title>Furniture Emporium - Sign Up</title>
   <meta name="description" content="User Signup Page!">
   <meta name="keywords" content="Register, Signup, Create Account">
@@ -172,70 +172,73 @@ if (isset($_SESSION['loggedIn'])) {
       console.log(MyVariable);
       httpxml.send();
   } else {
-    <?php
-    $_SESSION['signupError'] = TRUE;
-    ?>
+
   }
   };
 
   render() {
     return (
-      <div class="container">
+      <div class="container text-center">
+      <h3>Enter your personal details and start your furniture adventure with us!</h3>
   <div class="row">
   <div class="col-sm-1">
       </div>
   <div class="col-sm-10" align="center">
       <form onSubmit={this.handleSubmit} method="POST">
       <h1>Hello, {this.state.name}! </h1>
-      <h4>Enter your personal details and start your furniture adventure with us!</h4>
+
       <?php
       if (isset($_SESSION['signupError'])) {
         echo '<h6>Error: Invalid credentials were entered!</h6>';
       }
       ?>
-        <label>
+        <label class="form-control">
           Name:
           <input 
             type="text" 
             name='name'
             id='name'
             placeholder='Enter Name'
+            class="form-control"
 
             onChange={this.handleChange}/>
         </label>
         <h6>{this.state.errorMsgName}</h6>
 
-        <label>
+        <label class="form-control">
           Phone Number:
           <input 
             type="text" 
             name='phoneNumber'
             id='phoneNumber'
             placeholder='Enter Phone Number'
+            class="form-control"
 
             onChange={this.handleChange}/>
         </label>
         <h6>{this.state.errorMsgPhone}</h6>
 
-        <label>
+        <label class="form-control">
           Email Address:
           <input 
             type="text" 
             name='emailID'
             id='emailID'
             placeholder='Enter Email'
+            class="form-control"
 
             onChange={this.handleChange}/>
         </label>
         <h6>{this.state.errorMsgEmail}</h6>
 
-        <label>
+        <label class="form-control">
         Password:
         <input 
             type="text" 
             name='password'
             id='password'
             placeholder='Enter Password'
+            class="form-control"
 
             onChange={this.handleChange}/>
         </label>

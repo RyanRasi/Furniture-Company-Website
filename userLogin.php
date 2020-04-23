@@ -1,8 +1,10 @@
 <?php
 session_start();
+print_r($_SESSION);
 if (isset($_SESSION['loggedIn'])) {
   header("Location: userDashboard.php");
   exit();
+$_SESSION['signupError'] = NULL;
 }
 ?>
 <!doctype html>
@@ -16,7 +18,7 @@ if (isset($_SESSION['loggedIn'])) {
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/base.css" />
-  <link rel="stylesheet" href="./styles/login.css">
+  <link rel="stylesheet" href="./styles/form.css">
   <title>Furniture Emporium - Login</title>
   <meta name="description" content="User Login Page!">
   <meta name="keywords" content="Login, Signin">
@@ -31,14 +33,33 @@ if (isset($_SESSION['loggedIn'])) {
    echo '<h4>Error - Invalid credentials were submitted!</h4>';
 }
   ?>
-   Enter your Phone Number:<br />
-   <input type="text" name="phoneNumber" />
-   <br />
-   Enter your Password:<br />
-   <input type="password" name="password" />
-   <br />
-   <input type="submit" value="Login" />
+  <div class="container text-center">
+    <h1>Welcome Back!</h1>
+    <h3>Please login with your user credentials below!</h3>
+    <div class="row">
+    <div class="col-md-1">
+</div>
+      <div class="col-10 mx-auto text-center align-vertical">
+    <form>
+  <div class="form-group">
+    <label class="form-control" for="exampleInputEmail1">Phone Number
+    <input type="text" name="phoneNumber" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    </label>
+   
+   </div>
+   <div class="form-group">
+   <label class="form-control" for="exampleInputPassword1">Password
+     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+   </label>
+   </div>
+   <p>Don't have an account with us yet? <a href="./userSignup.php">Sign up here!</a> </p>
+   <input type="submit" value="Login" class="btn btn-primary"/>
   </form>
+</div>
+<div class="col-md-1">
+</div>
+</div>
+</div>
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
