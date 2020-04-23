@@ -16,7 +16,7 @@ if ($q == "View All") {
   while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="col-lg-3 col-md-4 col-sm-6">';
     echo '<div class="card" style="width: 100%;margin-bottom: 15px;">';
-    echo '<img class="card-img-top" src="./products/img/' . $row['filepath'] . '" alt="Card image cap" style="width:auto; height:300px; background-size:cover; float: left; object-fit:contain;">';
+    echo '<img class="card-img-top" src="./products/img/' . $row['filepath'] . '" alt="Image of Product" style="width:auto; height:300px; background-size:cover; float: left; object-fit:contain;">';
     echo '<div class="card-body" style="text-align:center;">';
     echo '<h5 class="card-title">' . $row['name'] . '</h5>';
     echo '<p class="card-text"> ' . $row['price'] . ' </p>';
@@ -49,7 +49,7 @@ if ($q == "View All") {
   while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="col-lg-3 col-md-4 col-sm-6">';
     echo '<div class="card" style="width: 100%;margin-bottom: 15px;">';
-    echo '<img class="card-img-top" src="./products/img/' . $row['filepath'] . '" alt="Card image cap" style="width:auto; height:300px; background-size:cover; float: left; object-fit:contain;">';
+    echo '<img class="card-img-top" src="./products/img/' . $row['filepath'] . '" alt="Image of Product" style="width:auto; height:300px; background-size:cover; float: left; object-fit:contain;">';
     echo '<div class="card-body" style="text-align:center;">';
     echo '<h5 class="card-title">' . $row['name'] . '</h5>';
     echo '<p class="card-text"> ' . $row['price'] . ' </p>';
