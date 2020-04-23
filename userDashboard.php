@@ -1,5 +1,6 @@
 <?php
 session_start();
+print_r($_SESSION);
 if (!isset($_SESSION['loggedIn'])) {
   header("Location: ./index.php");
   exit();
@@ -39,20 +40,63 @@ if (!isset($_SESSION['loggedIn'])) {
       ?>
 
       <div class="col-sm-7" style="margin-top: 16px;">
-        <div class="box" style="width: 100%; background-color:#f1f1f1; padding:15px">
+        <div class="box" style="width: 100%; height: 600; background-color:#f1f1f1; padding:15px">
           <?php
           if ($_SESSION['admin'] == TRUE) {
             echo ' <h2 align="center">Manager REST API</h2>';
             include "./productRestApi/index.php";
           } else {
-            echo 'Hi';
+            echo '
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+            
+            <div class="carousel-item active">
+            <img src="./img/kitchen.jpg" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>...</h5>
+              <p>...</p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+          <img src="./img/livingroom.jpg" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>...</h5>
+            <p>...</p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+        <img src="./img/sofa.jpg" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>...</h5>
+          <p>...</p>
+        </div>
+      </div>
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+            ';
           }
           ?>
         </div>
       </div>
       <div class="col-sm-5" style="margin-top: 16px;">
         <div class="box" style="width: 100%; background-color:#f1f1f1; padding:15px">
-          <iframe src="https://open.spotify.com/embed/playlist/2njiabuQAJcRTKC4CDja47" width="100%" height="480" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          <iframe src="https://open.spotify.com/embed/playlist/2njiabuQAJcRTKC4CDja47" width="100%" height="600" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
       </div>
     </div>
