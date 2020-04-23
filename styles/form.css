@@ -1,0 +1,14 @@
+input[type=text] {
+    min-width: 50%;
+    padding: 5px 9px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+h6{
+    color: red;
+}
+
+.row {
+  height:50vh;
+}

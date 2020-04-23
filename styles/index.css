@@ -10,7 +10,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(246,187,187,1) 0%, rgba(249,219,217,1) 90% );
+
     z-index: -1;
 }
 
@@ -65,4 +65,8 @@ section {
 
 p {
     text-align: center;
+}
+
+.border-primary {
+    border-color: white!important;
 }

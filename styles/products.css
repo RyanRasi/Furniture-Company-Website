@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(246,187,187,1) 0%, rgba(249,219,217,1) 90% );
-}
-
 .col-sm-6 {
     margin-top: 15px;
     margin-bottom: 15px;
