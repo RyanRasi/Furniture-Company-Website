@@ -75,10 +75,18 @@ public $aesKey = 'TheInfinityGauntlet';
  // select all query
  $query = 
  "SELECT id, name, phoneNumber, emailID, password, admin, created FROM " . $this->table_name . " WHERE
- phoneNumber='".$this->phoneNumber."' AND password=AES_ENCRYPT('".$this->password."', '$this->aesKey')";
+ phoneNumber=:phoneNumber AND password = AES_ENCRYPT(:password, :key)";
   //password = AES_ENCRYPT(password, '$aesKey'),
  // prepare query statement
  $stmt = $this->conn->prepare($query);
+ // sanitize
+ $this->phoneNumber=htmlspecialchars(strip_tags($this->phoneNumber));
+ $this->password=htmlspecialchars(strip_tags($this->password));
+ // bind values
+ $stmt->bindParam(":phoneNumber", $this->phoneNumber);
+ $stmt->bindParam(":password", $this->password);
+ $stmt->bindParam(":key", $this->aesKey);
+
  // execute query
  $stmt->execute();
  return $stmt;
