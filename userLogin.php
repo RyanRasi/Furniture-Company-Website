@@ -1,10 +1,9 @@
 <?php
 session_start();
-print_r($_SESSION);
+$_SESSION['signupError'] = NULL;
 if (isset($_SESSION['loggedIn'])) {
   header("Location: userDashboard.php");
   exit();
-$_SESSION['signupError'] = NULL;
 }
 ?>
 <!doctype html>
@@ -28,14 +27,14 @@ $_SESSION['signupError'] = NULL;
   <?php include "./components/navbar.php"; ?>
 
   <form action="./databaseConfig/login.php" method="POST">
-  <?php
- if (isset($_SESSION['loginError'])) {
-   echo '<h4>Error - Invalid credentials were submitted!</h4>';
-}
-  ?>
   <div class="container text-center">
     <h1>Welcome Back!</h1>
     <h3>Please login with your user credentials below!</h3>
+    <?php
+ if (isset($_SESSION['loginError'])) {
+   echo '<h6>Error - Invalid credentials were submitted!</h6>';
+}
+  ?>
     <div class="row">
     <div class="col-md-1">
 </div>
