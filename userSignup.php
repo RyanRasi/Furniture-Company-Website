@@ -1,6 +1,6 @@
 <?php
 session_start();
-print_r($_SESSION);
+$_SESSION['loginError'] = NULL;
 if (isset($_SESSION['loggedIn'])) {
   header("Location: userDashboard.php");
   exit();
@@ -30,6 +30,12 @@ if (isset($_SESSION['loggedIn'])) {
 
 <body>
   <?php include "components/navbar.php"; ?>
+  <?php
+  $nameValidation = FALSE;
+  $phoneNumberValidation = FALSE;
+  $emailIDValidation = FALSE;
+  $passwordValidation = FALSE;
+  ?>
   <div id="root"></div>
 
   <script type="text/babel">
@@ -46,7 +52,11 @@ if (isset($_SESSION['loggedIn'])) {
       errorMsgname: '',
       errorMsgPhone: '',
       errorMsgEmail: '',
-      errorMsgPassword: ''
+      errorMsgPassword: '',
+      nameVal: false,
+      phoneVal: false,
+      emailVal: false,
+      passVal: false,
     };
   }
 
@@ -58,6 +68,7 @@ if (isset($_SESSION['loggedIn'])) {
       if (name == "name") {
         if (value =="") {
             this.setState({errorMsgName: <strong>Your name should not be empty</strong>});
+            this.setState({nameVal: false});
         } else if (value !="") {
             var iChars = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?0123456789";	
             var textval = value;
@@ -69,32 +80,47 @@ if (isset($_SESSION['loggedIn'])) {
             }
             if (errorCount > 0) {
                 this.setState({errorMsgName: <strong>Your name has special characters, these are not allowed. Please remove them and try again.</strong>});
+                this.setState({nameVal: false});
             } else {
                 this.setState({errorMsgName: <strong>Your name is valid!</strong>});
+                this.setState({nameVal: true});
             }
         }
 // Phone Number Validation
       } else if (name === "phoneNumber") {
         if ((value !="" && !Number(value)) || (value.length>=12)){
             this.setState({errorMsgPhone: <strong>Your phone number should only be numerics between 0 to 9 and the it should not exceed 11 digits in total</strong>});
+            this.setState({phoneVal: false});
         } else if (value =="") {
             this.setState({errorMsgPhone: <strong>Your phone number should not be empty</strong>});
+            this.setState({phoneVal: false});
         } else {
             this.setState({errorMsgPhone: <strong>Your phone number is valid!</strong>});
+            this.setState({phoneVal: true});
         }
 // Email Validation
     } else if (name == "emailID") {
         const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         if ((emailRegEx.test(value) == false) && (value != "")) {
             this.setState({errorMsgEmail: <strong>Your email address is invalid!</strong>});
+            this.setState({emailVal: false});
         } else if  (value == "") {
             this.setState({errorMsgEmail: <strong>Your email address is empty!</strong>});
+            this.setState({emailVal: false});
         } else if (emailRegEx.test(value) == true) {
             this.setState({errorMsgEmail: <strong>Your email address is valid!</strong>});
+            this.setState({emailVal: true});
         }
+    } else if (name == "password") {
+        if  (value == "") {
+                this.setState({errorMsgPassword: <strong>Your password is empty!</strong>});
+                this.setState({passVal: false});
+        } else {
+          this.setState({errorMsgPassword: <strong>Your password is valid!</strong>});
+          this.setState({passVal: true});
+        }
+    }
 // Set final state
-} 
-      //
       this.setState({
       [name]: value,
     });
@@ -102,51 +128,7 @@ if (isset($_SESSION['loggedIn'])) {
 
   handleSubmit = event => {
   const { name, phoneNumber, emailID, password} = this.state;
-  //
-  var nameValidate = "";
-    var phoneValidate = "";
-    var emailValidate = "";
-//
-      // Name Validation
-        if (name =="") {
-          nameValidate = "FALSE";
-        } else if (name !="") {
-            var iChars = "!@#$%^&*()+=-[]\\\';,./{}|\":<>?0123456789";	
-            var textval = name;
-            var errorCount = 0;
-		    for (var i = 0; i < name.length; i++) {
-			    if (iChars.indexOf(textval.charAt(i)) != -1) {
-				    errorCount = errorCount + 1;
-                }
-            }
-            if (errorCount > 0) {
-              nameValidate = "FALSE";
-            } else {
-              nameValidate = "TRUE";
-            }
-        }
-// Phone Number Validation
-        if ((phoneNumber !="" && !Number(phoneNumber)) || (phoneNumber.length>=12)){
-          phoneValidate = "FALSE";
-        } else if (phoneNumber =="") {
-          phoneValidate = "FALSE";
-        } else {
-          phoneValidate = "TRUE";
-        }
-// Email Validation
-        const emailRegEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if ((emailRegEx.test(emailID) == false) && (emailID != "")) {
-          emailValidate = "FALSE";
-        } else if  (emailID == "") {
-          emailValidate = "FALSE";
-        } else if (emailRegEx.test(emailID) == true) {
-          emailValidate = "TRUE";
-        }
 // Set final state
-
-// Set final state
-  //
-  if ((nameValidate == "TRUE") && (phoneValidate == "TRUE") && (emailValidate == "TRUE")) {
   var httpxml;
     try  {
       // Firefox, Chrome, Opera 8.0+, Safari
@@ -169,14 +151,13 @@ if (isset($_SESSION['loggedIn'])) {
     }
       var MyVariable = `name=${name}&phoneNumber=${phoneNumber}&emailID=${emailID}&password=${password}`;
       httpxml.open("POST","./databaseConfig/signup.php?"+MyVariable,true);
-      console.log(MyVariable);
       httpxml.send();
-  } else {
-
-  }
   };
 
   render() {
+    const { nameVal, phoneVal, emailVal, passVal } = this.state;
+      const enabled =
+      nameVal === true && phoneVal === true && emailVal === true && passVal === true;
     return (
       <div class="container text-center">
       <h3>Enter your personal details and start your furniture adventure with us!</h3>
@@ -189,11 +170,11 @@ if (isset($_SESSION['loggedIn'])) {
 
       <?php
       if (isset($_SESSION['signupError'])) {
-        echo '<h6>Error: Invalid credentials were entered!</h6>';
+        echo '<h6>Error - Invalid credentials were submitted!</h6>';
       }
       ?>
         <label class="form-control">
-          Name:
+          Full Name:
           <input 
             type="text" 
             name='name'
@@ -234,7 +215,7 @@ if (isset($_SESSION['loggedIn'])) {
         <label class="form-control">
         Password:
         <input 
-            type="text" 
+            type="password" 
             name='password'
             id='password'
             placeholder='Enter Password'
@@ -242,9 +223,10 @@ if (isset($_SESSION['loggedIn'])) {
 
             onChange={this.handleChange}/>
         </label>
+        <h6>{this.state.errorMsgPassword}</h6>
         <br></br>
 
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Sign Up!" class="btn btn-primary" disabled = {!enabled}/>
       </form>	  
       </div>
       <div class="col-sm-1">
