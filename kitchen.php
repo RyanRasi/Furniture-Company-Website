@@ -1,5 +1,7 @@
 <?php
 session_start();
+$_SESSION['loginError'] = NULL;
+$_SESSION['signupError'] = NULL;
 ?>
 <!doctype html>
 <html lang="en">
