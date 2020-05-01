@@ -111,6 +111,7 @@ if (isset($_SESSION['loggedIn'])) {
             this.setState({errorMsgEmail: <strong>Your email address is valid!</strong>});
             this.setState({emailVal: true});
         }
+// Email Validation
     } else if (name == "password") {
         if  (value == "") {
                 this.setState({errorMsgPassword: <strong>Your password is empty!</strong>});
