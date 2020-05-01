@@ -1,6 +1,5 @@
 <?php
 session_start();
-print_r($_SESSION);
 if (!isset($_SESSION['loggedIn'])) {
   header("Location: ./index.php");
   exit();
@@ -17,7 +16,7 @@ if (!isset($_SESSION['loggedIn'])) {
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="./styles/base.css" />
-  <link rel="stylesheet" href="./styles/index.css" />
+  <link rel="stylesheet" href="./styles/dashboard.css" />
   <title>Furniture Emporium - Dashboard</title>
   <meta name="description" content="User Dashboard Page!">
   <meta name="keywords" content="Offers, Purchase, UserConfig">
@@ -40,7 +39,7 @@ if (!isset($_SESSION['loggedIn'])) {
       ?>
 
       <div class="col-sm-7" style="margin-top: 16px;">
-        <div class="box" style="width: 100%; height: 600; background-color:#f1f1f1; padding:15px">
+        <div class="box">
           <?php
           if ($_SESSION['admin'] == TRUE) {
             echo ' <h2 align="center">Manager REST API</h2>';
@@ -56,26 +55,23 @@ if (!isset($_SESSION['loggedIn'])) {
             <div class="carousel-inner">
             
             <div class="carousel-item active">
-            <img src="./img/kitchen.jpg" alt="...">
+            <img src="./img/kitchen.jpg" alt="Picture of a Kitchen">
             <div class="carousel-caption d-none d-md-block">
-              <h5>...</h5>
-              <p>...</p>
+              <h5>Design your dream kitchen!</h5>
             </div>
           </div>
 
           <div class="carousel-item">
-          <img src="./img/livingroom.jpg" alt="...">
+          <img src="./img/livingroom.jpg" alt="Picture of a Living Room">
           <div class="carousel-caption d-none d-md-block">
-            <h5>...</h5>
-            <p>...</p>
+            <h5>Relax in style with our living room collection</h5>
           </div>
         </div>
 
         <div class="carousel-item">
-        <img src="./img/sofa.jpg" alt="...">
+        <img src="./img/sofa.jpg" alt="Picture of a Sofa">
         <div class="carousel-caption d-none d-md-block">
-          <h5>...</h5>
-          <p>...</p>
+          <h5>Check out our sofa range with new exotic colours!</h5>
         </div>
       </div>
 
@@ -95,7 +91,7 @@ if (!isset($_SESSION['loggedIn'])) {
         </div>
       </div>
       <div class="col-sm-5" style="margin-top: 16px;">
-        <div class="box" style="width: 100%; background-color:#f1f1f1; padding:15px">
+        <div class="box">
           <iframe src="https://open.spotify.com/embed/playlist/2njiabuQAJcRTKC4CDja47" width="100%" height="600" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
       </div>
