@@ -32,9 +32,9 @@ $_SESSION['signupError'] = NULL;
 
   <header>
     <section>
-      <div class="hero">
+      <div class="containerSlide">
         <img src="./img/sofa.jpg" alt="An image of a blue sofa">
-        <h1 class="headline">Dream Big</h1>
+        <h1 class="headline">Your Style!</h1>
       </div>
     </section>
   </header>
