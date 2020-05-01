@@ -21,13 +21,13 @@ section {
     align-items: center;
 }
 
-.hero {
+.containerSlide {
     height: 60%;
     width: 100%;
     position: relative;
 }
 
-.hero img {
+.containerSlide img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -43,7 +43,7 @@ section {
     z-index: 3;
 }
 
-.hero::after {
+.containerSlide::after {
     content: "";
     background: black;
     width: 100%;
@@ -52,21 +52,4 @@ section {
     left: 0;
     opacity: 0.3;
     top: 0;
-}
-
-.card {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-.col-md-4 {
-    margin-bottom: 15px;
-}
-
-p {
-    text-align: center;
-}
-
-.border-primary {
-    border-color: white!important;
 }
