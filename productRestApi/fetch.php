@@ -2,7 +2,7 @@
 
 //fetch.php
 
-$api_url = "http://localhost/Lecture5/Casestudy/api/test_api.php?action=fetch_all";
+$api_url = "http://localhost/17010485/productRestApi/test_api.php?action=fetch_all";
 
 $client = curl_init($api_url);
 
