@@ -1,6 +1,6 @@
 <?php
-
 //Api.php
+
 
 class API
 {
@@ -11,9 +11,11 @@ class API
 		$this->database_connection();
 	}
 
+
 	function database_connection()
 	{
-		$this->connect = new PDO("mysql:host=localhost;dbname=17010485", "root", "");
+		include_once '../databaseConfig/credentials.php';
+		$this->connect = new PDO("mysql:host=" . $host . ";dbname=" . $dbname, $username, $password);
 	}
 
 	function fetch_all()
