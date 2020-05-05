@@ -15,6 +15,7 @@ class User{
  public $admin = FALSE;
  public $created;
 
+// Encryption Key
 public $aesKey = 'TheInfinityGauntlet';
 
  // constructor with $db as database connection
