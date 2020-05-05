@@ -5,6 +5,7 @@ if (isset($_SESSION['loggedIn'])) {
   header("Location: userDashboard.php");
   exit();
 }
+// If teh user is logged in then they are redirected to the dashboard page
 ?>
 <!doctype html>
 <html lang="en">
@@ -29,13 +30,8 @@ if (isset($_SESSION['loggedIn'])) {
 </head>
 
 <body>
+  <!-- Imports the Navbar -->
   <?php include "components/navbar.php"; ?>
-  <?php
-  $nameValidation = FALSE;
-  $phoneNumberValidation = FALSE;
-  $emailIDValidation = FALSE;
-  $passwordValidation = FALSE;
-  ?>
   <div id="root"></div>
 
   <script type="text/babel">
@@ -63,7 +59,8 @@ if (isset($_SESSION['loggedIn'])) {
   handleChange = (event) => {
       let name = event.target.name;
       let value = event.target.value;
-      //
+      // When a change is detected in the input each of the text fields are checked against these parameters
+      // Once all the validations = true, then the buttons becomes enabled for clicking
       // Name Validation
       if (name == "name") {
         if (value =="") {
@@ -159,6 +156,7 @@ if (isset($_SESSION['loggedIn'])) {
     const { nameVal, phoneVal, emailVal, passVal } = this.state;
       const enabled =
       nameVal === true && phoneVal === true && emailVal === true && passVal === true;
+      // If all validation == true, then the button can be clicked, else the button is disabled
     return (
       <div class="container text-center">
       <h3>Enter your personal details and start your furniture adventure with us!</h3>

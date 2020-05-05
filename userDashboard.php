@@ -38,13 +38,15 @@ if (!isset($_SESSION['loggedIn'])) {
   </div>';
       ?>
 
-      <div class="col-sm-7" style="margin-top: 16px;">
+      <div class="col-sm-12" style="margin-top: 16px;">
         <div class="box">
           <?php
           if ($_SESSION['admin'] == TRUE) {
             echo ' <h2 align="center">Manager REST API</h2>';
             include "./productRestApi/index.php";
+            // Manager REST API is displayed to the user if they are an admin user
           } else {
+            // Image slideshow is displayed to the user if they are not an admin user
             echo '
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -90,11 +92,7 @@ if (!isset($_SESSION['loggedIn'])) {
           ?>
         </div>
       </div>
-      <div class="col-sm-5" style="margin-top: 16px;">
-        <div class="box">
-          <iframe src="https://open.spotify.com/embed/playlist/2njiabuQAJcRTKC4CDja47" width="100%" height="600" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-        </div>
-      </div>
+
     </div>
   </div>
 

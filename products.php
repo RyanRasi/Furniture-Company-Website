@@ -27,11 +27,9 @@ $_SESSION['signupError'] = NULL;
 
 <body>
   <?php include "components/navbar.php"; ?>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
-
 
   <?php
+  // If a product has been ordered then a success message is displayed
   if (isset($_SESSION['ordered'])) {
     echo '
   <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -47,7 +45,7 @@ $_SESSION['signupError'] = NULL;
   }
   ?>
 
-
+<!-- Living room and kitchen links inside a container -->
   <div class="container-fluid">
     <div class="row">
       <div class="col-xl-6">

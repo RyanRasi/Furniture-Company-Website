@@ -5,6 +5,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- HOME and PRODUCTS links -->
     <ul class="navbar-nav ml-auto mr-auto">
     <li class="nav-item active">
         <a class="nav-link" href="./index.php">HOME <span class="sr-only">(current)</span></a>
@@ -15,6 +16,7 @@
     </ul>
 
  <form class="form-inline my-2 my-lg-0">
+   <!-- If the user is logged in then the dashboard and signout buttons appear, otherwise the login button appears -->
 <?php
 if (isset($_SESSION['loggedIn'])) {
       echo '<a class="btn btn-outline-secondary my-2 my-sm-0" href="./userDashboard.php">Dashboard</a>';

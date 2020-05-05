@@ -17,16 +17,7 @@ $user->phoneNumber = $_GET['phoneNumber'];
 $user->emailID = $_GET['emailID'];
 $user->password = $_GET['password'];
 $user->created = date('Y-m-d H:i:s');
-/*
-if(empty($user->phoneNumber))
- {
- echo("No user name");
- }
- else
- {
- echo("user name:" . $user->password);
- }
-*/
+
 // create the user
 if($user->signup()){
  // Set User session variables
@@ -47,8 +38,11 @@ if($user->signup()){
  "emailID" => $user->emailID,
  "phoneNumber" => $user->phoneNumber
  );
+ header("Location: userDashboard.php");
+ exit();
 }
 else{
+    // Error if phone number already exists
  $_SESSION['signupError'] = 'TRUE';
  $user_arr=array(
  "status" => false,

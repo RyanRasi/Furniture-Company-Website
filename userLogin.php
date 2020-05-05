@@ -5,6 +5,7 @@ if (isset($_SESSION['loggedIn'])) {
   header("Location: userDashboard.php");
   exit();
 }
+// If the user is logged in then they are redirected to the dashboard page
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,6 +25,7 @@ if (isset($_SESSION['loggedIn'])) {
 </head>
 
 <body>
+  <!-- Imports the Navbar -->
   <?php include "./components/navbar.php"; ?>
 
   <form action="./databaseConfig/login.php" method="POST">
@@ -51,7 +53,9 @@ if (isset($_SESSION['loggedIn'])) {
      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
    </label>
    </div>
+   <!-- Redirects to signup page -->
    <p>Don't have an account with us yet? <a href="./userSignup.php">Sign up here!</a> </p>
+   <!-- Submits value -->
    <input type="submit" value="Login" class="btn btn-primary"/>
   </form>
 </div>

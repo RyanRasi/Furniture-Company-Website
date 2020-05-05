@@ -2,7 +2,7 @@
 
 //test_api.php
 
-include('./Api.php');
+include './Api.php';
 
 $api_object = new API();
 
