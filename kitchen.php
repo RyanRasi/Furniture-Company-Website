@@ -24,13 +24,8 @@ $_SESSION['signupError'] = NULL;
 
   </head>
   <body>
+    <!-- Imports the Navbar -->
       <?php include "./components/navbar.php";?>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js" integrity="sha256-lPE3wjN2a7ABWHbGz7+MKBJaykyzqCbU96BJWjio86U=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineMax.min.js" integrity="sha256-fIkQKQryItPqpaWZbtwG25Jp2p5ujqo/NwJrfqAB+Qk=" crossorigin="anonymous"></script>
-
-   
-       
-
 
       <div class="container-fluid text-center">
   <div class="row">
@@ -42,24 +37,22 @@ $_SESSION['signupError'] = NULL;
 </div>
     <div class="col-md-2">
 <label for="exampleFormControlSelect1"><b>Sort Variety</b></label>
-
+<!-- Option select -->
 <select class="form-control" name=variety id='s1' onchange=ajaxFunction(s1.value);>
 <option value='View All'>View All</option>
 
 <?php
-$dbhost_name = "localhost"; 
-$database = "17010485";
-$username = "root";
-$password = "";
+// Imports the database config credentials
+include_once './databaseConfig/credentials.php';
 
 try {
-$dbo = new PDO('mysql:host='.$dbhost_name.';dbname='.$database, $username, $password);
+$dbo = new PDO('mysql:host='.$host.';dbname='.$dbname, $username, $password);
 
 } catch (PDOException $e) {
 print "Error!: " . $e->getMessage() . "<br/>";
 die();
 }
-
+// The option values from the tables variety column
 $sql="select distinct variety from Kitchen ";
 foreach ($dbo->query($sql) as $row) {
 	echo "<option value='" . $row["variety"] . "'>" . $row["variety"] . "</option>";
@@ -75,21 +68,10 @@ foreach ($dbo->query($sql) as $row) {
         
 </div>
 <br><br>
-
 <div class="container-fluid">
   <div class="row" id="your_div">Product info will be listed here...</b></div>
 
 </div>
-
-
-
-
-
-
-     
-
-    
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

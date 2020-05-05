@@ -1,18 +1,19 @@
 <?php
 session_start();
+include_once '../databaseConfig/credentials.php';
 $q = $_GET['q'];
 
-$connection = mysqli_connect("localhost", "root", "", "17010485");
+$connection = mysqli_connect($host, $username, $password, $dbname);
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
-
+// If view all is selected then all the products appear
 if ($q == "View All") {
   $query = "SELECT * FROM `kitchen`";
 
   $result = mysqli_query($connection, $query);
-
+// A bootstrap card is echoed and looped with all the features of the product, e.g. name, price, image
   while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="col-lg-3 col-md-4 col-sm-6">';
     echo '<div class="card" style="width: 100%;margin-bottom: 15px;">';
@@ -41,11 +42,11 @@ if ($q == "View All") {
 
   }
 } else {
-
+// Else if the variety selected only appears
   $query = "SELECT * FROM `kitchen` WHERE variety='$q'";
 
   $result = mysqli_query($connection, $query);
-
+// A bootstrap card is echoed and looped with all the features of the product, e.g. name, price, image
   while ($row = mysqli_fetch_assoc($result)) {
     echo '<div class="col-lg-3 col-md-4 col-sm-6">';
     echo '<div class="card" style="width: 100%;margin-bottom: 15px;">';

@@ -1,21 +1,15 @@
 <?php
 class Database{
-
- // specify your own database credentials
- private $host = "localhost";
- //private $db_name = "PHPLearning";
- private $username = "root";
- private $password = "";
- private $dbname = "17010485";
  public $conn;
-
  // get the database connection
  public function getConnection(){
+     
+ include_once 'credentials.php';
 
  $this->conn = null;
 
  try{
- $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->dbname, $this->username, $this->password);
+ $this->conn = new PDO("mysql:host=" . $host . ";dbname=" . $dbname, $username, $password);
  $this->conn->exec("set names utf8"); 
   //echo "Connected!"
  }catch(PDOException $exception){

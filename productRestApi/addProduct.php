@@ -1,5 +1,6 @@
 <?php
 session_start();
+include_once '../databaseConfig/credentials.php';
 // Table name
 $table_name = "orders";
 
@@ -9,13 +10,8 @@ $emailID = $_POST['emailID'];
 $item = $_POST['item'];
 $price = $_POST['price'];
 
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "myDB";
-
 // Create connection
-$conn = mysqli_connect("localhost", "root", "", "17010485");
+$conn = mysqli_connect($host, $username, $password, $dbname);
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
